@@ -1,0 +1,190 @@
+﻿.text_clip{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.mod_song_list li .song_name{
+    margin: 0px 10px;
+    width: 175px;
+}
+
+.mod_song_list .num{
+    display: block;
+    float: left;
+    margin-top: 2px;
+    width: 25px;
+    height: 21px;
+    background: #CCC none repeat scroll 0% 0%;
+    color: #FFF;
+    text-align: center;
+    font-size: 12px;
+    line-height: 21px;
+}
+
+.mod_song_list .song_name{
+    width:150px;
+}
+
+.m_tab01{
+
+}
+
+.m_tab01 .mod_song_list .num{
+    background: transparent none repeat scroll 0% 0%;
+    color: #A0A0A0;
+}
+
+.m_tab01 .tab_menu{
+    display: block;
+    background: transparent url("sprt_index.png") no-repeat scroll 0px -301px;
+    overflow: hidden;
+    width: 250px;
+    height: 40px;
+}
+
+.m_tab01 .tab_menu li{
+    float:left;
+    width:125px;
+    height:40px;
+}
+
+.m_tab01 .tab_menu:last-child{
+    clear:both;
+}
+
+.m_tab01 .tab_con{
+    width:100%;
+    overflow:hidden;
+}
+
+.m_tab01 .tab_con .tab_item{
+    background: #2E3235 none repeat scroll 0% 0%;
+}
+
+.m_tab01 .login_box{
+    height:40px;
+    padding:0px 10px;
+    text-align:left;
+    line-height:40px;
+    background: #494E53 none repeat scroll 0% 0%;
+    border-bottom: 1px solid #3A3E42;
+}
+
+
+.m_tab01 .login_box > span{
+    padding: 5px;
+    color: #FFECC2;
+}
+
+.m_tab01 .login_box .tools{
+    padding-right:0px;
+}
+
+.m_tab01 .login_box .tools a{
+    float:left;
+    display:inline-block;
+    color: #FFF;
+    background: #458FCE none repeat scroll 0% 0%;
+    height: 20px;
+    line-height:20px;
+    padding:2px 5px;
+    width:auto;
+}
+
+.m_tab01 .login_box .tools a:hover{
+    text-decoration:underline;
+}
+
+.m_tab01 .mod_song_list{
+    background: #2E3235 none repeat scroll 0% 0%;
+    width:100%;
+}
+
+.m_tab01 .mod_song_list li{
+    overflow:hidden; 
+    background: #494E53 none repeat scroll 0% 0%;
+    width:100%;
+    height: 25px;
+    line-height: 25px;
+    border-bottom: 1px solid #3A3E42;
+    cursor: default;
+}
+
+.m_tab01 .mod_song_list li:hover{
+    background: #393E42 none repeat scroll 0% 0%;
+}
+
+.m_tab01 .song_name a{
+    color: #B9C2CA;
+}
+
+.m_tab01 .mod_song_list li .song_name{
+    margin: 0px 10px;
+    width:auto;
+    max-width:150px;
+    color: #B9C2CA;
+    font-family: tahoma,helvetica,arial,"宋体",sans-serif;
+}
+
+.m_tab01 .mod_song_list .icon_tools a {
+        display: inline-block;
+        margin-top: 2px;
+        width: 20px;
+        height: 20px;
+        background-image: url('sprt.png');
+}
+
+.m_tab01 .mod_song_list .icon_tools a.play{
+    background-position: 0px -944px;
+}
+
+.m_tab01 .mod_song_list .icon_tools a.play:hover{
+    background-position: 0px -969px;
+}
+
+.m_tab01 .mod_song_list .icon_tools a.down{
+    background-position: 0px -769px;
+}
+
+.m_tab01 .mod_song_list .icon_tools a.down:hover{
+    background-position: 0px -794px;
+}
+
+.m_tab01 .news{
+    width:100%;
+    height:171px;
+    position:relative;
+}
+
+.m_tab01 .news .flag_info{
+    display: inline-block;
+    position:absolute;
+    width:40px;
+    height:40px;
+    background: transparent url("http://img01.12530.com/res/images/sprt.png") no-repeat scroll -80px -325px;
+    top: -1px;
+    left: 0px;
+}
+
+
+.m_tab01 .news .news_list{
+    height:150px;
+    float:left;
+    margin:10px;
+    margin-right:10px;
+}
+
+.m_tab01 .news .news_list li{
+    width:220px;
+    float:left;
+    margin: 5px 0px;
+    text-align:left;
+    color: #B9C2CA;
+    line-height:1.5;
+    font-family: tahoma,helvetica,arial,"宋体",sans-serif;
+}
+
+.m_tab01 .news .news_list li a{
+    color: #B9C2CA;
+}

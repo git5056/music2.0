@@ -1,0 +1,31 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+assembly="Domain"
+namespace="Domain"
+auto-import="true">
+  <class name="Domain.Singer, Domain" table="singers" >
+    <id name="ID" column="_id" type="int" >
+      <generator class="native" />
+    </id>
+    <property name="Name" column="singer_name" type="string"  />
+    <many-to-one name="HeadImg" class="Domain.Resource" not-null="false"
+                    column="headimg_id" >
+    </many-to-one>
+    <property name="Birthday" column="birthday" type="DateTime"  />
+    <property name="Fav" column="fav" type="int"  />
+    <property name="Introduce" column="introduce" type="string"  />
+    <property name="Weight" column="weight" type="int"  />
+    <property name="Tall" column="tall" type="int"  />
+    <property name="Address" column="address" type="string"  />
+    <property name="TagId" column="tag_id" type="int"  />
+    <property name="TypeIds" column="type_ids" type="string"  />
+    <property name="ReviewEnabled" column="reviewenabled" type="bool"  />
+    <property name="VisitorReviewEnabled" column="visitorreviewenabled" type="bool"  />
+    <!--lazy="false" inverse="false" cascade="save-update"-->
+    <set name="Songs" lazy="true" inverse="false" cascade="save-update" >
+      <key column="singer_id" ></key>
+      <one-to-many class="Domain.Song"/>
+    </set>
+    
+  </class>
+</hibernate-mapping>

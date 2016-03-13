@@ -1,0 +1,121 @@
+﻿@model IMusic.Models.ReviewListModel
+
+@{
+    Layout = null;
+}
+
+<style>
+
+    .comment_wrap .comment_input img{
+        width:50px;
+        height:50px;
+        
+    }
+
+    .comment_wrap .tilte{
+        width: 100%;
+        height: 25px;
+        background: transparent url("/Content/css/sprt_tit_yhpl.png") no-repeat scroll 0% 0%;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #DDD;
+        margin-bottom:20px;
+    }
+
+    .comment_input .comment_box{
+        width: 91.2195%;
+        color: #666;
+    }
+
+    .comment_input .comment_box .comment_textarea{
+        padding: 5px;
+        height: 68px;
+        border: 1px solid #DDD;
+        width:100%;
+        background: #FFF url("/Content/css/textarea_top_shadow.png") repeat-x scroll left top;
+        color: #666;
+        font-size: 12px;
+        line-height: 22px;
+        resize: none;
+        vertical-align:middle;
+}
+    .comment_input .comment_box .btn_comment{
+        display:inline-block;
+        width: 100px;
+        height: 32px;
+        background: transparent url("/Content/css/sprt_btn_fbpl.png") no-repeat scroll 0% 0%;
+        line-height: 32px;
+}
+    .comment_wrap .comment_list li{
+        padding: 20px 0px;
+        background: transparent url("/Content/css/dot_line.png") repeat-x scroll 0px bottom;
+    }
+
+    .comment_wrap .comment_list .user_pic a img{
+        width:50px;
+        height:50px;
+    }
+
+    .comment_wrap .comment_list li .r_content_box{
+        width: 91.2195%;
+    }
+
+    .comment_wrap .comment_list li .comment_con_p{
+        color: #666;
+        text-align:left;
+        margin: 15px 0px;
+        word-break: break-all;
+        line-height: 22px;
+    }
+
+</style>
+
+
+<div class="comment_wrap">
+    <h3 class="tilte"><span class="fr">共<em>37</em>条评论</span></h3>
+    <div class="comment_input">
+        <img class="fl" src="/Content/css/no_user_pic.jpg" />
+        <div class="comment_box fr">
+            <textarea class="comment_textarea" id="txt_comment" >请输入评论(5~50字)</textarea>
+            <p class="fl" style="width:100%;padding-top:10px;">
+                <span class="fl" style="line-height:32px;font-size:12px">
+                    <input class="fl" style="margin-right:5px;margin-top:10px;" type="checkbox" name="chk_name" />匿名评论
+                </span>
+                <a class="btn_comment fr" href="javascript:;"></a>
+            </p>
+        </div>
+    </div>
+    <div>
+        <ul class="comment_list">
+            @for (int i = 0; i < 5 && i < Model.Comments.Count; i++)
+            {
+                <li>
+                    <div class="list_wrap clearfix">
+                        <a href="javascript:;" style="cursor:default" class="user_pic fl">
+                            <img src="~/Content/img/no_user_pic.jpg">
+                        </a>
+                        <div class="r_content_box fr">
+                            <p class="comment_con_top clearfix">
+                                <span class="fl">
+                                    <a href="javascript:;" style="cursor:default" class="user_name">@Model.Comments[i].Reviewer.DspName</a>
+                                    <em class="time  ml30">@Model.Comments[i].ReviewTime.ToString()</em>
+                                </span><span class="fr">#@(Model.PageModel.InALL-(Model.PageModel.PageIndex-1)*Model.PageModel.PageSize - i) </span>
+                            </p>
+                            <p class="comment_con_p">@Model.Comments[i].Content</p>
+                            <p class="comment_tools mb5 clearfix func_com">
+                                <span class="fl">
+                                    <a href="javascript:;" class="ding">赞</a><em>|</em>
+                                    <a href="javascript:;" class="cai">踩</a><em>|</em>
+                                    <a href="javascript:;" class="a_reply">回复</a>
+                                </span>
+                                <span class="h_info" style="display:none">
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            }           
+        </ul>
+        <div class="clearfix" style="text-align:center;width:100%;padding-bottom:30px;"><div class="fr pb10 " style="margin:0 auto;">@Html.Partial("_PagefPartial", Model.PageModel)</div></div> 
+    </div>
+</div>
+

@@ -1,0 +1,129 @@
+﻿@model IMusic.Models.PagefModel
+
+@{
+    Layout = null;
+}
+
+<style>
+    .pagef{
+	    margin-top: 20px;
+	    text-align: center;
+	    font-size: 0;
+	    font-family: arial
+    }
+
+    .pagef ul li{
+        float:left;
+    }
+
+    .pagef ul li a{
+        display: inline-block;
+        margin: 0px 5px;
+        width: 30px;
+        border: 1px solid #DDD;
+        background: #E7E7E7 none repeat scroll 0% 0%;
+        color: #666;
+        vertical-align: middle;
+        font-size: 12px;
+        line-height: 30px;
+    }
+
+    .pagef ul li a:hover {
+    color: #09F;
+    text-decoration: none;
+}
+
+    .pagef ul li a.morepage:hover {
+    background-color: #E4E4E4;
+}
+
+    .pagef ul li.curpage a{
+        border: 1px solid #09F;
+        background-color: #09F;
+        color: #FFF;
+}
+
+    .pagef ul li.pre a, .pagef ul li.next a {
+        display: inline-block;
+        width: 48px;
+        height: 30px;
+        color: #E7E7E7;
+        text-indent: -999em;
+}
+
+     .pagef ul li.pre a{
+         background: #E7E7E7 url("/Content/css/icon_page_pre.jpg") no-repeat scroll center center;
+     }
+    
+     .pagef ul li.next a{
+         background: #E7E7E7 url("/Content/css/icon_page_next.jpg") no-repeat scroll center center;
+     }
+
+
+
+</style>
+
+<div class="pagef">
+    <ul>
+
+        @{
+            var pageNum = Model.PageNum;
+            var cidx = Model.PageIndex;
+            var lc=3;
+            var rc=3;
+            try
+            {
+                cidx = Int32.Parse(Request["page"].ToString());
+                pageNum = Int32.Parse(Request["all"].ToString());
+            }
+            catch{
+                
+            }
+
+            if (1 < cidx)
+            {
+               <li class='pre'><a href="?page=@(cidx-1)">上一页</a></li>
+            }
+            for (int i = 1; i <= pageNum; i++)
+            {
+                if (i < lc + 1)
+                {
+                    <li class='@(i == cidx ? "curpage" : "")'><a href='?page=@i'>@i</a></li>
+                }
+                else if (i > pageNum - rc)
+                {
+                    <li class='@(i == cidx ? "curpage" : "")'><a href='?page=@i'>@i</a></li>
+                }
+
+                else if (Math.Abs(i - cidx) < 3)
+                {
+                    <li class='@(i == cidx ? "curpage" : "")'><a href='?page=@i'>@i</a></li>
+                }
+                else if (Math.Abs(i - cidx) == 3)
+                {
+                    <li class='morepage'><a href='?page=@i'>...</a></li>
+                }
+                @*else
+                {
+                    if (i == lc + 1 && cidx != 1)
+                    {
+                        <li class='morepage'><a href='?page=@i'>...</a></li>
+                    }
+                    else if (i == acount - rc && cidx != acount)
+                    {
+                        <li class='morepage'><a href='?page=@i'>...</a></li>
+                    }
+                    else
+                    {
+                        
+                    }
+                    continue;
+                }*@
+            }
+            if (cidx < pageNum)
+            {
+                <li class='next'><a href="?page=@(cidx+1)">下一页</a></li>
+            }
+}
+    </ul>
+</div>

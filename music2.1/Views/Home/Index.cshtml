@@ -1,0 +1,137 @@
+﻿@{
+    ViewBag.Title = "Index";
+    ViewBag.CurrentNav = "首页";
+    Layout = "~/Views/Shared/_Layout01.cshtml";
+
+}
+
+@section css{
+    <link href="@Url.Content("~/Content/Css/index.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/js/mybanner/banner.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Css/mytable.css")" rel="Stylesheet" type="text/css" />
+}
+
+@section js{
+    <script src="@Url.Content("~/Content/js/mybanner/banner.js")"></script>
+    <script>
+        $(function () {
+            $.ajaxSetup({ async: false });
+            var arr1 = [],arr2=[];
+            $.post('/ajax/song/hot', { 'count': 10 }, function (data) {
+                var obj = {};
+                obj.title = 'i音乐榜';
+                obj.btn_name = '最热';
+                obj.song_list = data;
+                arr1[0] = obj;
+            }, 'json'); 
+            $.post('/ajax/song/latest', { 'count': 10 }, function (data) {
+                var obj = {};
+                obj.title = '最新音乐榜';
+                obj.btn_name = '最新';
+                obj.song_list = data;
+                arr1[1] = obj;
+            }, 'json');
+            $.post('/ajax/song/recommend', { 'tag': '流行' }, function (data) {
+                var obj = {};
+                obj.title = 'i推荐';
+                obj.btn_name = '流行';
+                obj.song_list = data;
+                arr2[0] = obj;
+            }, 'json');
+            $.post('/ajax/song/recommend', { 'tag': '海外' }, function (data) {
+                var obj = {};
+                obj.title = 'i推荐';
+                obj.btn_name = '海外';
+                obj.song_list = data;
+                arr2[1] = obj;
+            }, 'json');
+            $.post('/ajax/song/recommend', { 'tag': '欧美' }, function (data) {
+                var obj = {};
+                obj.title = 'i推荐';
+                obj.btn_name = '欧美';
+                obj.song_list = data;
+                arr2[2] = obj;
+            }, 'json');
+            $.post('/ajax/song/recommend', { 'tag': '网络' }, function (data) {
+                var obj = {};
+                obj.title = 'i推荐';
+                obj.btn_name = '网络';
+                obj.song_list = data;
+                arr2[3] = obj;
+            }, 'json');
+            $(".song_list_wraper01").append(m_tabs02(arr1));
+            $(".song_list_wraper02").append(m_tabs02(arr2));
+        });
+    </script>
+}
+
+<div class="main_wrap">
+    <div class="g_0 g">
+        <div class="js_banner fl"></div>
+        <div class="fr">
+            @Html.Partial("m_tab01")
+        </div>
+        <div class="clearfix"></div>
+
+    </div>
+    <div class="g_1 g">
+        <div class="fl">@Html.Action("m_tab02_s02")</div>
+        <div class="everydayzhuda fr" style="width:250px;">
+            <p>
+                <span class="new_tilte" style="display:inline-block;float:left;line-height:25px;font-size:25px;">每日主打</span>
+                <div class="clearfix"></div>
+            </p>
+            <div>
+                <div class="song_info">
+                    <div style="width:250px;height:90px;">
+                        <img style="width:90px;height:90px;margin-left:0px;" class="fl" src="~/Content/img/d269699f-7a8f-482e-aac1-f5c775155f9b.jpg_RsT_100x90.jpg" />
+                        <ul class="fl" style="margin-left:0px;width:135px;text-align:left;padding-left:15px;">
+                            <li><a href="#" style="color: #458FCE;font-size: 14px;font-weight: 700;line-height: 20px;">小葡萄</a></li>
+                            <li><a href="#" style="color: #458FCE;font-size: 12px;line-height: 20px;">正月十五</a></li>
+                            <li style="line-height: 20px;color: #808080;font-size: 12px;">推荐指数:</li>
+                            <li>
+                                <em class="fl" style="display:inline-block;width: 16px;height: 16px;background: transparent url('/Content/css/sprt.png') scroll 0% 0%;height: 16px;background-position: 0px -1119px;"></em>
+                                <em class="fl" style="display:inline-block;width: 16px;height: 16px;background: transparent url('/Content/css/sprt.png') scroll 0% 0%;height: 16px;background-position: 0px -1119px;"></em>
+                                <em class="fl" style="display:inline-block;width: 16px;height: 16px;background: transparent url('/Content/css/sprt.png') scroll 0% 0%;height: 16px;background-position: 0px -1119px;"></em>
+                                <em class="fl" style="display:inline-block;width: 16px;height: 16px;background: transparent url('/Content/css/sprt.png') scroll 0% 0%;height: 16px;background-position: 0px -1119px;"></em>
+                                <em class="fl" style="display:inline-block;width: 16px;height: 16px;background: transparent url('/Content/css/sprt.png') scroll 0% 0%;height: 16px;background-position: 0px -1119px;"></em>
+                            </li>
+                            <li></li>
+                        </ul>
+                    </div>
+                    <p class="song_desc" style="width:250px;padding-top:10px; height:40px;text-align:left;color: #808080;font-size: 12px;line-height: 20px;">新洗脑神曲，它以甘霖畅快的方式敲击出欢快节奏，快迈开欢快的舞步吧。</p>
+                </div>
+                <span class="_button" style="text-align:left;">
+                    <a href="#" style="display:block;margin-top:10px; width: 80px;height: 22px; float:left; background: transparent url('content/css/sprt.png') no-repeat scroll 0% 0%;width: 80px;height: 22px;background-position: -83px -189px;"></a>
+                    <a href="#" style="display:block;margin-left:20px; margin-top:10px; width: 80px;height: 22px; float:left; background: transparent url('content/css/sprt.png') no-repeat scroll 0% 0%;width: 80px;height: 22px;background-position: 0px -243px;"></a>
+                </span>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>   
+    <div class="g_2 g">
+        <div class="song_list_wraper01 fl" style="width:390px;"></div>
+        <div class="song_list_wraper02 fl" style="margin-left:40px; width:390px;"></div>
+        <div class="fr" style="width: 250px;overflow: hidden;">
+            <img src="~/Content/img/jxj.png" />
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="g_3 g">
+        <div class="fl" style="width:auto">
+               @Html.Partial("m_tab02_s03")
+        </div>
+        <div class="music_tag_wraper fr"></div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="g_4 g">
+        <div class="fl">
+            @Html.Partial("m_tab02_s04")
+        </div>
+        <div class="fr" style="width: 250px; overflow: hidden;">
+            @Html.Partial("_mstPartial")
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+

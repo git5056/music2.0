@@ -1,0 +1,99 @@
+﻿
+        .l_song li{
+            margin: 0px;
+            height: 30px;
+            line-height: 30px;
+        }
+        .l_song li div .ckbox{
+            line-height:20px;
+            padding-top:6px;
+        }
+
+        .l_song li div .ckbox input{
+         
+        }
+
+        .l_song li div .num{
+            display:block;
+            margin-top: 8px;
+            width: 30px;
+            height: 16px;
+            line-height: 16px;
+            background: #CCC none repeat scroll 0% 0%;
+            color: #FFF;
+            text-align: center;
+            font-size: 12px;
+            margin-left:10px;
+            margin-right:10px;
+        }
+
+        .l_song li div .song_name{
+            display:inline-block;
+            width:246px;
+            height:30px;
+            margin-left:20px;
+            margin-right:20px;
+        }
+
+        .l_song li div .song_name a{
+            color: #161616;
+            font-size: 14px;
+        }
+
+        .l_song li div .hot_outer{
+            display:inline-block;
+            width:205px;
+            height:30px;
+            margin-left:30px;
+            margin-right:50px;
+        }
+
+        .l_song li div .hot_inner{
+            display:inline-block;
+            float:left;
+            background: #CCC none repeat scroll 0% 0%;
+            height:10px;
+            margin:10px 0px;
+        }
+
+        .l_song li div .tools{
+            display:block;
+            width:100px;
+            height:20px;
+        }
+
+        .l_song li div .tools a{
+            display:inline-block;
+            width: 20px;
+            height: 20px;
+            background-image: url("sprt.png");
+        }
+
+        .l_song li div .tools a.play{
+            background-position: 0px -944px;
+        }
+        .l_song li div .tools a.down{
+            background-position: 0px -769px;
+        }
+        .l_song li div .tools a.collect{
+            background-position: 0px -819px;
+        }
+
+        .l_song li .m_tools a{
+            display: inline-block;
+            background: transparent url("sprt.png") no-repeat scroll 0% 0%;
+        }
+
+        .l_song li .m_tools .playlist{
+            width: 95px;
+            height: 22px;
+            background-position: -83px -269px;
+        }
+
+        .l_song li .m_tools .music_list_add{
+            width: 110px;
+            height: 22px;
+            background-position: -83px -216px;
+        }
+
+

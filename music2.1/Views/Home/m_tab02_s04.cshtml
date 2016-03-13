@@ -1,0 +1,81 @@
+﻿@{
+    Layout = null;
+
+}
+
+<section id="scroll_map04">
+    <script>
+    $(function () {
+        var cidx = 0;
+        var aidx = $(".m_tab02.scroll_map04 li").length;
+        var $scroll_map = $(".m_tab02.scroll_map04");
+        var row_c = 9;
+        var fresh = function () {
+            $(".cidx", $scroll_map).html(parseInt(cidx / row_c) + 1);
+            $(".aidx", $scroll_map).html(parseInt(aidx / row_c));
+            $("li", $scroll_map).removeClass("currenut");
+            $("li", $scroll_map).each(function (data) {
+                if (data >= cidx && data < cidx + row_c) {
+                    $(this).addClass("currenut");
+                }
+            });
+        };
+        $(".left", $scroll_map).click(function () {
+            cidx -= row_c;
+            if (cidx < 0) {
+                cidx = aidx - row_c;
+            }
+            fresh();
+            return false;
+        });
+        $(".right", $scroll_map).click(function () {
+            cidx += row_c;
+            if (cidx > aidx - 1) {
+                cidx = 0;
+            }
+            fresh();
+            return false;
+        });
+    });
+    </script>
+    <!--@*<div class="m_tab02 scroll_map04">
+        <p>
+            <span class="tilte fl">专辑推荐</span>
+            <div class="icon_tools fr">
+                <div class="num fl mr10">
+                    <em class="cidx">1</em>/<em class="aidx">2</em>
+                </div>
+                <a href="#" class="left fl"></a>
+                <a href="#" class="right fl"></a>
+            </div>
+            <div class="clearfix"></div>
+        </p>
+        <ul class="tabs_con"></ul>
+    </div>*@-->
+    
+    <div class="m_tab02 scroll_map04">
+        <p>
+            <span class="tilte fl">MV推荐</span>
+            <div class="icon_tools fr">
+                <div class="num fl mr10">
+                    <em class="cidx">1</em>/<em class="aidx">2</em>
+                </div>
+                <a href="#" class="left fl"></a>
+                <a href="#" class="right fl"></a>
+            </div>
+            <div class="clearfix"></div>
+        </p>
+        <ul class="m_tabcon">
+            @for (int i = 0; i < 18; i++)
+            {
+                <li class='@((i % 9 == 0 ? "clear_margin first" : "")) @(i<9?"currenut":"")'>
+                    <a class="song_img" href="#">
+                        <img src='@("/Content/img/" + "s4_map0" + (i + 1) + ".jpg")' />
+                    </a><div class="clearfix"></div>
+                    <a class="name">Bird And Tree(爱</a><div class="clearfix"></div>
+                </li>
+            }
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+</section>

@@ -1,0 +1,97 @@
+﻿@model IList<IMusic.BLL.Song>
+
+@{
+    Layout = null;
+}
+
+<script>
+    $(function () {
+        $(".selectAll").click(function () {
+            
+            $(":input[name='ckb1']").each(function () {
+                if (!this.checked) {
+                    this.checked = true;
+                }
+            });
+            return false;
+        });
+
+        $(".play").click(function () {
+            var isOpen = false;
+            $.ajaxSetup({ async: false });
+            $.post("/home/play", { 'songid': $(this).attr('_songid'), 'isloadandplay': true }, function (data) {
+                var dd=2;
+                switch (data.code) {
+                    case 0: 
+                        if (data.code1 == 1) {
+                            isOpen = false;
+                        }
+                        else if (data.code1 == 2) {
+                            isOpen = true;
+                        }
+                        else {
+                            alert('error');
+                        }
+
+                        break;
+                    default: break;
+                }
+                if (isOpen) {
+                    $(this).attr("href", "/home/play").attr('target', 'target');
+                }
+                else {
+                    $(this).attr("href", "javascript:;");
+                }
+            },'json');
+
+        });
+
+        $(".collect").click(function () {
+            $.post('/ajax/song/favit', { 'songid': parseInt($(this).attr('_songid')) }, function (data) {
+                if (data) {
+                    alert('添加成功');
+                }
+                else {
+                    alert('添加失败');
+                }
+            }, 'json');
+        });
+    });
+
+</script>
+
+<ul class="l_song mod_list clearfix" style="">
+    @{
+        if (Model==null||Model.Count == 0)
+        {
+            <li>未找到与该歌手相关歌曲</li>
+        }
+    }
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <li>
+            <div>
+                <span class="fl ckbox"><input type="checkbox" name="ckb1" checked="checked" /> </span>
+                <span class='fl'><span class='num @(i<3?"blue":"")'> @(i < 9 ? "0" + (i + 1) : (i + 1).ToString())</span></span>
+                <span class='fl song_name text_clip' style='color: #999;font-size: 12px;font-family: tahoma,helvetica,arial,"宋体",sans-serif;text-align:left;'><a href='#'>@Model[i].Name</a></span>
+                <span class="fl hot_outer"><span class="hot_inner" style="width:@((i*10).ToString()+"%")"></span></span>
+                <span class='fr' style="padding-top:10px;">
+                    <span class='tools'>
+                        <a class='play' href="javascript:;" _playlink='@Model[i].Mp3Src' _songid='@Model[i].ID'></a>
+                        <a class='down' href='@("/ajax/song/down/?songid="+ Model[i].ID )' ></a>
+                        <a class="collect" _songid="@Model[i].ID" href="javascript:;"></a>
+                    </span>
+                </span>
+</div>
+            <div class="clearfix"></div>
+        </li>
+    }
+    <li>
+        <div class='m_tools mt10 clearfix' style="font-size:0px">
+            <a class="selectAll fl mr10" href="javascript:;" style="display:inline-block;font-size:12px;line-height:22px;padding:0px 10px;background-image:none;  background-color:#1ac4e2;color:#fff">全选</a>
+            <a class='playlist fl mr10 ml10' href='#'></a>
+            <a class='music_list_add fl ml10' href='#'></a>
+        </div>
+    </li>
+</ul>
+

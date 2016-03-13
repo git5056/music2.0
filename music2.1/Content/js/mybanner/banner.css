@@ -1,0 +1,318 @@
+﻿.banner{
+    width:820px;
+    height:340px;
+    display:inline-block;
+    position:relative;
+}
+
+.banner_ico {
+    display: inline-block;
+    background: transparent url('sprt.png') no-repeat scroll 0% 0%;
+}
+
+.banner li{
+    float:left;
+    display:none;
+}
+
+
+
+.banner .current{
+    display:inline-block;
+}
+
+.bot {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 30px;
+    padding: 10px 0px;
+    background: transparent url("sprt_index.png") repeat-x scroll 0px -386px;
+    text-align: left;
+}
+
+.bot p{
+    color: #FFF;
+    font-size: 22px;
+    line-height: 30px;
+    font-weight: 400;
+    text-indent: 15px;
+    font-family: "Hiragino Sans GB","Microsoft YaHei";
+}
+
+.banner_pre,.banner_next{   
+    width: 60px;
+    height: 80px;
+    position: absolute;
+    display: block;
+    cursor: pointer;
+    bottom: 150px;
+    z-index: 9;
+}
+
+.banner_pre {    
+    left: 0px;
+    background-position: -29px -423px;
+}
+
+.banner_next{
+    right:0px;
+    background-position: -99px -423px;
+}
+
+.banner_navigator_wraper{
+    float: left;
+    height: 10px;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    z-index:99;
+}
+
+.banner_navigator{
+
+}
+
+.banner_navigator li{
+    width:20px;
+    height:10px;
+    display: block;
+    float: left;
+    background-position:0px -401px;
+    position: relative;
+    cursor: pointer;
+    list-style: outside none none;
+    margin-left: 5px;
+    text-align: center;
+}
+
+.active{
+    background-position: 0px -416px !important;
+}
+
+
+.song_list{
+    position:relative;
+    width:100%;
+    height:365px;
+}
+
+.song_list h3{
+    height:25px;
+    text-align:left;
+    color:black;
+    font-size:25px;
+    line-height:25px;
+    font-weight:500;
+    padding-bottom:20px;
+}
+
+.song_list .tabs_con{
+    width:100%;
+
+}
+
+.song_list .song_list_tabs{
+    position:absolute;
+    right:0px;
+    top:0px;
+    z-index:100;
+    cursor:pointer;
+}
+
+.song_list .song_list_tabs li.current{
+    background: #458FCE none repeat scroll 0% 0%;
+    color: #FFF;
+}
+
+.song_list .song_list_tabs li{
+    display:inline-block;
+    float:left;
+    background:#EDEDED none repeat scroll 0% 0%;
+    width:54px;
+    height:24px;
+    color: #666;
+    text-align: center;
+    font-weight: 400;
+    font-size: 12px;
+    font-family: "Hiragino Sans GB","Microsoft Yahei";
+    line-height: 24px;
+}
+
+.song_list .tabs_item{
+
+}
+
+.song_list .tabs_item li{
+    float: left;
+    clear: both;
+    overflow: hidden;
+    margin: 2px 0px;
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    cursor: default;
+}
+
+ .song_list .num{
+    display: block;
+    float: left;
+    margin-top: 2px;
+    width: 25px;
+    height: 21px;
+    background: #CCC none repeat scroll 0% 0%;
+    color: #FFF;
+    text-align: center;
+    font-size: 12px;
+    line-height: 21px;
+}
+
+ .song_list .blue{
+    background: #458FCE none repeat scroll 0% 0%;
+ }
+
+ .song_list .song_name{
+    text-align:left;
+    margin: 0px 10px;
+    width: 175px;
+}
+
+
+ .song_list .song_name a{
+    display:block;
+    color: #161616;
+    font-size: 14px;
+    cursor:pointer;
+    line-height:14px;
+    height:16px;
+    padding-top:5px;
+}
+
+/*.text_clip {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}*/
+
+ .singer{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align:left;
+    height:21px;
+}
+
+.singer a{
+    color: #999;
+    font-size:12px;
+    cursor:pointer;
+}
+
+.tools{
+    
+}
+
+.tools a{
+    display: inline-block;
+    margin-top: 2px;
+    width: 20px;
+    height: 20px;
+    background-image: url("/Content/css/sprt.png");
+    cursor:pointer;
+}
+
+.tools a.play{
+    background-position: 0px -944px;
+}
+
+.tools a.down{
+    background-position: 0px -769px;
+}
+
+.m_tools{
+    position:absolute;
+    width:100%;
+    bottom:0px;
+    left:0px;
+    z-index:100;
+    text-align:left;
+}
+
+.m_tools a{
+    display: inline-block;
+    background: transparent url('/Content/css/sprt.png') no-repeat scroll 0% 0%;
+}
+
+.m_tools a.playlist{
+    width: 70px;
+    height: 22px;
+    background-position: 0px -270px;
+}
+
+.m_tools a.music_list_add{
+    width: 70px;
+    height: 22px;
+    background-position: 0px -216px;
+    margin-left:20px;
+}
+
+.m_tab3{
+
+}
+
+.m_tab3.music_tag{
+    width:250px;
+    height:195px;
+}
+
+.title{
+    text-align:left;
+    font-size: 100%;
+    font-size:25px;
+    width:100%;
+    height:25px;
+}
+
+.m_tab3 .tags{
+    width:100%;
+    margin-top:20px;
+    margin-bottom:20px;
+    overflow:hidden;
+}
+
+.m_tab3 .tags li{
+    float:left;
+    display:inline-block;
+    margin: 0px 1px 1px 0px;
+}
+
+.m_tab3 .tags li.yellow a{
+    background: #E9E7B7 none repeat scroll 0% 0%;
+}
+
+.m_tab3 .tags li.green a{
+    background: #CEE7B4 none repeat scroll 0% 0%;
+}
+
+.m_tab3 .tags li.gray a{
+    background: #DADADA none repeat scroll 0% 0%;
+}
+
+.m_tab3 .tags li.red a{
+    background: #E8D4D4 none repeat scroll 0% 0%;
+}
+
+
+.m_tab3 .tags li a{
+    display:inline-block;
+    width:49px;
+    height:25px;
+    text-align: center;
+    line-height: 25px;
+}
+
+.music_special_topic{
+
+}
+

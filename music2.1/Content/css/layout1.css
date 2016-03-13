@@ -1,0 +1,280 @@
+﻿
+.head {
+    width:100%;
+    height:140px;
+    background: transparent url('sprt.png') repeat-x scroll 0px -1664px;
+}
+
+.head_swap{
+    margin: 0px auto;
+    width: 1100px;
+}
+
+
+
+.head_top{
+    height:30px;
+    line-height:30px;
+}
+
+.head_top a{
+    color: #666;
+}
+
+.head_top .left a{
+    color: #666;
+}
+
+.head_top .left a:hover{
+    color: #FFC0CB;
+}
+
+.head_top .left{
+    float:left;
+}
+
+.head_top .web_login{
+    float:right;
+    
+}
+.web_login a{
+    color: #666;
+    display:inline-block;
+    width:auto;
+    height:30px;
+    line-height:30px;
+}
+
+.web_login a:hover{
+    color:pink;
+}
+
+.web_login li em{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: -6px;
+    font-weight: normal;
+}
+.icon_user{
+    background: transparent url("sprt.png") no-repeat scroll -16px -319px;
+}
+
+.head_mid{
+    margin: 0px auto;
+    width: 1100px;
+    height: 70px;
+}
+.head_mid_logo{
+    display: inline-block;
+    background: transparent url("sprt.png") no-repeat scroll 0% 0%;
+    float:left;
+    width: 228px;
+    height: 52px;
+    background-position: 0px -537px;
+}
+.head_mid_logo .search_bar{
+
+
+}
+
+.nav {
+    position: relative;
+    z-index: 999;
+    float: left;
+    clear: both;
+    width: 100%;
+}
+
+
+.nav .mouseover{
+   position:relative;
+   background-color: #6A6B6C;
+   color:white;
+}
+
+.submenu{
+    display:none;
+    position:absolute;
+    width:500px;
+    color: #6A6B6C;
+}
+
+.submenu a:hover{
+    color: #FFC0CB;
+}
+
+.submenu dd{
+    float:left;
+    margin-left:39px;
+}
+
+
+.nav ul li{
+    position: relative;
+    z-index: 100;
+    display: inline;
+    float: left;
+    width: 95px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.nav ul li a{
+    display: block;
+    color: #6A6B6C;
+    text-align: center;
+    font-size: 14px;
+}
+
+
+.nav li.current > a{
+    background-color: #DD137B;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.footer{
+    clear: both;
+    margin: 10px 0px;
+    padding-bottom: 80px;
+    width: 100%;
+    background: transparent url("/Content/css/sprt.png") repeat-x scroll 0px -1843px;
+}
+
+.footer_swap{
+    width:1100px;
+    margin:0 auto;
+}
+
+.footer_top{
+    width:100%;
+    height:52px;
+}
+
+.footer .search_bar_wrap {
+    margin-left: 350px;
+    padding: 10px 0px;
+    height: 32px;
+}
+
+.footer_mid{
+    padding-top:80px;
+    position:relative;
+}
+
+.footer .footer_mid_wraper{
+    position:absolute;
+    top:20px;
+    left:0px;
+    width:100%;
+}
+
+.footer_mid li{
+    float:left;
+    margin-right: 60px;
+    color: #666;
+    font-weight: 700;
+}
+
+.footer_mid li dl{
+    margin-top:10px;
+}
+
+.footer_mid li dl dd{
+    padding: 5px 0px;
+}
+
+.footer_mid li dl a{
+    margin-top: 5px;
+    color: #999;
+    font-weight: 400;
+}
+
+.connect_me_weixin{
+    width:28px;
+    height:28px;
+    display: inline-block;
+    background: transparent url("sprt.png") no-repeat scroll 0% 0%;
+    background-position: 0px -1381px;
+}
+
+.more{
+
+}
+
+.QRCode{
+    float:left;
+    margin-left:100px;
+    width:220px;
+    height:71px;
+    padding:15px;
+    text-align:left;
+}
+
+.QRCode span{
+   display:block;
+   float: left;
+   width:80px;
+   height:80px;
+   margin-right: 20px;
+}
+
+.QRCode span.QRCode1{
+    background:url('http://img01.12530.com/res/images/footer_song_icon.png');
+}
+
+.QRCode span.QRCode2{
+    background:url('http://img01.12530.com/res/images/footer_ring_icon.png');
+}
+
+.copyright{
+    float:right;
+    text-align:right;
+}
+
+.copyright p{
+}
+
+.copyright_logo_ico{
+    background: transparent url("sprt.png") no-repeat scroll 0% 0%;
+    float:right;
+    display:block;
+    width: 150px;
+    height: 50px;
+    background-position: 0px -594px;
+}
+
+.search_box{
+    text-align:left 
+}
+
+.search_box .search_input{
+    height: 32px;
+    width:250px;
+    padding:0px 5px;
+    float:left;
+    text-align:left;
+    background-color:white;
+    margin: auto; 
+    padding-right:2px; 
+}
+
+.search_box .search_input .search_input_wraper{
+    display:block;
+    margin:5px 7px 5px 5px;
+}
+
+.search_box .search_input .search_input_wraper input{
+    border:none;
+    width:100%;
+}
+
+.search_box .search_status{
+     display: inline-block;
+     margin-left:2px;
+     cursor:pointer; 
+     background: transparent url('sprt.png') no-repeat scroll 0px -1140px;
+     width: 45px;
+     height: 32px;
+}

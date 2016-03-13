@@ -1,0 +1,225 @@
+﻿.path{
+    width:auto;
+    position:absolute;
+    height:auto;
+    left:15px;
+    top:18px;
+    text-align:left;
+    font-size:14px;
+    color: #666;
+    font-family: tahoma,helvetica,arial,"宋体",sans-serif;
+    line-height: 1.5;
+}
+
+.path a {
+    font-size:14px;
+    color: #458FCE;
+    font-weight: bold;
+}
+
+.pt15{
+    padding-top:15px !important;
+}
+
+.pr10{
+    padding-right:10px !important;
+}
+
+.path a{
+    color: #458FCE;
+    font-weight: bold;
+}
+
+
+
+.letter_list_items{
+    position:absolute;
+    right:0px;
+    top:0px;
+}
+
+.letter_list_items li.first-child{
+    width:44px;
+}
+
+.letter_list_items li{
+    float:left;
+    width: 30px;
+    height: 34px;
+    border-right:solid 1px dashed;
+    font-size: 14px;
+}
+
+.letter_list_items li a{
+    display:block;
+    color: #458FCE;
+    width:auto;
+    height:100%;
+    padding:0px 7px;
+    background: transparent url("/Content/css/sprt_yk.png") no-repeat scroll right 0px;
+}
+
+.letter_list_items li.first-child.current a, .letter_list_items li.first-child a:hover, .letter_list_items li.first-child.current a:hover {
+    color: #DD137B;
+    font-weight: bold;
+    background: transparent url("/Content/css/sprt_yk.png") no-repeat scroll right -65px;
+}
+
+.letter_list_items li.current a, .letter_list_items li a:hover, .letter_list_items li.current a:hover {
+    background: transparent url("/Content/css/sprt_yk.png") no-repeat scroll right -30px;
+    color: #DD137B;
+    font-weight: bold;
+}
+
+.music_pool_singer{
+    width:1100px;
+    height:900px;
+    margin:0 auto;
+
+}
+
+.music_pool_singer .singer_zmpl,.album_zmpl{
+    position:relative;
+    z-index: 999;
+    width: 100%;
+    height: 52px;
+    background-color: #F3F3F3;
+}
+
+.music_pool_singer .singer_pool{
+    
+}
+
+.music_pool_singer .slide_singer_menu{
+    text-align:left;
+    width: 250px;
+}
+
+.slide_singer_menu li h3{
+    padding-left: 30px;
+    width: 220px;
+    height: 40px;
+    background-color: #E5E5E5;
+    color: #666;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 40px;
+}
+
+
+.singer_submenu{
+    width:100%;
+}
+
+.singer_submenu dd{
+    width:100%;
+    border-bottom: 1px solid #EBEBEB;
+}
+
+
+.singer_submenu dd a{
+    display:inline-block;
+    color: #666;
+    padding-left: 50px;
+    width: 200px;
+    height: 25px;
+    background: transparent url("/Content/css/sprt_yk.png") no-repeat scroll -211px -125px;
+    line-height: 25px;
+}
+
+
+.music_pool_singer .slide_singer_con{
+    width: 820px; 
+    padding-bottom:20px;
+}
+
+.hot_singer_box{
+    width:100%;
+    text-align:left;
+}
+
+.hot_singer_box .hot_singer_title {
+    display:inline-block;
+    text-indent: -9993em;
+    width: 120px;
+    height: 25px;
+    background: url('sprt_yk.png') no-repeat scroll 0px -125px;
+}
+
+.hot_singer_box li{
+    float:left;
+    margin-left:20px;
+    width: 120px;
+    height: 165px;
+    color: #161616;
+    text-align:left;
+}
+
+.hot_singer_box li.clear_margin{
+    margin-left:0px;
+}
+
+.hot_singer_box li a {
+    width:100%;
+    line-height: 30px;
+}
+
+.singer_name_list_wrap{
+    text-align:left;
+    position:relative;
+}
+
+.singer_name_list_anchor{
+    position:absolute;
+    top:0px;
+    right:0px;
+}
+
+.singer_name_list_anchor a:hover{
+    background-color: #458FCE !important;
+    color: #FFF !important;
+}
+
+.singer_name_list h3{
+    margin-bottom: 0px;
+    color: #888;
+    font-size: 30px;
+    line-height: 30px;
+}
+
+.singer_name_list li ul li{
+position: relative;
+float: left;
+margin-right: 12px;
+margin-bottom: 0px;
+width: 138px;
+color: #666;
+}
+
+.singer_name_list li ul li a{
+    display: block;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+font-size: 14px;
+margin-top: 15px;
+padding-left: 3px;
+width: 136px;
+border-bottom: 1px solid transparent;
+color: #666;
+
+}
+
+.singer_name_list li ul li a:hover {
+    border-bottom-color: #666;
+    background: #F8F8F8 none repeat scroll 0% 0%;
+    color: #458FCE;
+}
+
+.album_impl{
+    position: relative;
+z-index: 999;
+width: 100%;
+height: 52px;
+background-color: #F3F3F3;
+}

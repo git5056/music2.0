@@ -1,0 +1,71 @@
+﻿@model IList<Domain.Song>
+
+@{
+    Layout = null;
+}
+
+<section id="scroll_map02">
+    <script>
+    $(function () {
+        var cidx = 0;
+        var aidx = $(".m_tab02.scroll_map02 li").length;
+        var $scroll_map = $(".m_tab02.scroll_map02");
+        var row_c = 6;
+        var fresh = function () {
+            $(".cidx", $scroll_map).html(parseInt(cidx / row_c) + 1);
+            $(".aidx", $scroll_map).html(parseInt(aidx / row_c));
+            $("li", $scroll_map).removeClass("currenut");
+            $("li", $scroll_map).each(function (data) {
+                if (data >= cidx && data < cidx + row_c) {
+                    $(this).addClass("currenut");
+                }
+            });
+        };
+        $(".left", $scroll_map).click(function () {
+            cidx -= row_c;
+            if (cidx < 0) {
+                cidx = aidx - row_c;
+            }
+            fresh();
+            return false;
+        });
+        $(".right", $scroll_map).click(function () {
+            cidx += row_c;
+            if (cidx > aidx - 1) {
+                cidx = 0;
+            }
+            fresh();
+            return false;
+        });
+    });
+    </script>
+
+    <div class="m_tab02 scroll_map02">
+        <p>
+            <span class="tilte fl">新歌首发</span>
+            <div class="icon_tools fr">
+                <div class="num fl mr10">
+                    <em class="cidx">1</em>/<em class="aidx">2</em>
+                </div>
+                <a href="#" class="left fl"></a>
+                <a href="#" class="right fl"></a>
+            </div>
+            <div class="clearfix"></div>
+        </p>
+        <ul class="m_tabcon">
+            @for (int i = 0; i < 12 && i < Model.Count; i++)
+            {
+                <li class='@(i % 6 == 0 ? "clear_margin" : "") @(i<6?"currenut":"")'>
+                    <a class="song_img" href="#">
+                        <img src='@Model[i].Singer.HeadImg.RealName' />
+                    </a><div class="clearfix"></div>
+                    <a class="name">@Model[i].Name</a><div class="clearfix"></div>
+                    <a class="singer_name" href='@("/singer/d/"+Model[i].Singer.ID)'>@Model[i].Singer.Name</a>
+                </li>
+            }
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+</section>
+
+

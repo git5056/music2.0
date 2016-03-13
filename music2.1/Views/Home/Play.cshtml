@@ -1,0 +1,420 @@
+﻿
+@{
+    ViewBag.Title = "Play";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>@ViewBag.Title</title>
+        <link href="~/Content/css/global.css" rel="stylesheet" />
+        <link href="~/Content/css/play/play.css" rel="stylesheet" />
+        <script src="~/Content/js/jquery-2.1.4.js"></script>
+        <script src="~/Content/js/jquery-ui.min.js"></script>
+        <script src="~/Content/css/play/jquery.nicescroll.js"></script>
+        <script>
+    $(function () {
+        window.setInterval(function () {
+            $.post("/home/playlist",{},
+                function (data) {
+                    switch (data.code) {
+                        case 0:
+                            var r = getrow() > 0 ? getrow() :0;
+                            $(".playlist-body").appendRowItem(data.playlist);
+                            $('.song_num').html(getrow());
+                            if (data.isloadandplay) {
+                                if (getrow() > 0) {
+                                    play1(r);
+                                    //playmusic({ 'songid': data.playlist[0].song_id });
+                                }
+                            }
+
+                            break;
+                        default: break;
+                    }
+                },"json");
+        }, 3000);
+
+        var curindex = 0;
+
+        var playmusic = function (p) {
+            var p1 = p || { 'songid': p.songid };
+
+            $.post('/home/PlayMusic', p1, function (data) {
+                switch (data.code) {
+                    case 0:
+                        $("#playerer").attr('src', data.src);
+                        play();
+                        break;
+                    default: break;
+                };
+            }, 'json');
+        }
+
+        var getrow = function () {
+            return $('.playlist-body').children(".row-item").length;
+        }
+
+        var play1 = function (idx) {
+            if (idx >= getrow() || idx < 0) {
+                alert('error');
+                return;
+            }
+            curindex = idx;
+            $(".playlist-body .row-item:eq(" + curindex + ")").appendRoam();
+            $(".playlist-body .row-item").removeClass('track-current');
+            $(".playlist-body .row-item:eq(" + curindex + ")").addClass('track-current');
+            playmusic({ 'songid': parseInt($(".playlist-body .row-item:eq(" + curindex + ") em").attr('_songid')) });
+            $('.player-track-info a:eq(0)').html($(".playlist-body .row-item:eq(" + curindex + ") .row-item-body .c1 span").html());
+            $('.player-track-info a:eq(2)').html($(".playlist-body .row-item:eq(" + curindex + ") .row-item-body .c2 a").html());
+            $('.song_cover .song_img img').attr('src',$(".playlist-body .row-item:eq(" + curindex + ") .row-item-body").attr('_song_cover_src'));
+        }
+
+        $.fn.appendRoam = function () {
+            var str="";
+            str+="<div class='roam-wrap' >";
+            str += "<div class='roam-head'><a class='roam-open' data-event='roam'>漫游相似歌曲</a></div>";
+            str += "</div>";
+            if (this.children('.roam-wrap').length > 0) {
+
+            }
+            else {
+                this.append(str);
+            }
+        }
+
+        $.fn.appendRowItem = function (p) {
+
+            var arr = [];
+            if (typeof (p) == 'object' && p.constructor != Array) {
+                arr[0] = p;
+            }
+            else {
+                arr = p;
+            }
+            var formatNum = function (num) {
+                var formatstr = '';
+                if (num < 1 || num > 99) {
+                    return "undefined";
+                }
+                if (num < 9) {
+                    formatstr += '0' + i;
+                }
+                else {
+                    formatstr += num;
+                }
+                return formatstr;
+            }
+            var rows = $(this).children(".row-item").length;
+            var f1 = this;
+            var updatenum = function () {
+                $('.row-item', f1).each(function (data) {
+                    $('.track-sort em',this).html(data + 1);
+                });
+            }
+
+            var str = "";
+            for (var i = 0, length = arr.length; i < length; i++) {
+                str += " <div class='row-item'>";
+                str += "<div class='track-main'>";
+                str += "<div class='track-checkbox'>";
+                str += "<input class='ui-track-item-id' name='track' value='1774962800' type='checkbox'>"
+                str += "</div>";
+                str += "<div class='track-sort'><em _songid='" + arr[i].song_id + "'>" + (rows + i + 1) + "</em></div>";
+                str += "<div class='row-item-body' _song_cover_src='" + arr[i].song_cover_src + "' >";
+                str += "<div class='row-item-column c1' data-id='1774962800'><span title='" + arr[i].song_name + "'>" + arr[i].song_name + "</span></div>";
+                str += "<div class='row-item-column c2' data-artist-id='7244'><a href='#' target='_blank' title='" + arr[i].singer_name + "'>" + arr[i].singer_name + "</a></div>";
+                str += "<div class='row-item-column c3' data-album-id='2100210830'><a href='#' target='_blank' title='" + arr[i].album_name + "'>" + arr[i].album_name + "</a></div>";
+                str += "</div>";
+                str += "<div class='track-control'>";
+                str += "<a class='fav-btn icon-track-fav' data-type='track' data-event='fav' title='收藏'></a>";
+                str += "<a class='more-btn icon-track-more' data-type='track' data-event='more' title='更多'></a>";
+                str += "<a class='delete-btn icon-track-delete' data-type='track' data-event='delete' title='删除'></a>";
+                str += "</div>";
+                str += "</div>";
+                str += "</div>";
+            }
+            var $temp = $(str);
+            //bind event
+            $(".delete-btn", $temp).click(function () {
+                var fl = false;
+                if ($(this).parent().parent().parent().index() == curindex) {
+                    //playnext
+                    fl = true;
+                }
+                $(this).parent().parent().parent().remove();
+                if (fl) {
+                    play1(curindex);
+                }
+                var playlist_body = $('.playlist-body').get(0);
+                //playlist_body.style.overflow != "hidden" && playlist_body.scroll != 'no' &&
+                if (!(playlist_body.scrollHeight > playlist_body.offsetHeight)) {
+                    $('.playlist-body').removeClass("clearbackground");
+                } 
+                $('.song_num').html(getrow());
+            });
+
+            $(".track-main", $temp).mouseover(function () {
+
+                $(this).addClass("track-hover").children(".track-control").addClass("track-current");
+            });
+
+            $('em', $temp).click(function () {
+                play1($(this).parent().parent().parent().index());
+                return false;
+                //playmusic({ 'songid': parseInt($(this).attr('_songid')) });
+            });
+
+            $(".track-main", $temp).mouseleave(function () {
+                $(this).removeClass("track-hover").children(".track-control").removeClass("track-current");
+            });
+
+            $(".icon-track-fav", $temp).click(function () {
+                $(".playlist-body").appendRowItem([1, 2]);
+            });
+
+            $(this).append($temp);
+        };
+
+        $(".playlist-body").scroll(function () {
+            $(this).addClass("clearbackground");
+        });
+
+        var $player = $('#playerer');
+        var isPlaying = false;
+        var timeout;
+        var play = function () {
+            $player.get(0).play();
+            //$('.playback').addClass('playing');
+            timeout = setInterval(updateProgress, 500);
+            isPlaying = true;
+
+            $('.play-btn').css("background-position", "0px -30px");
+        }
+
+        var pause = function () {
+            $player.get(0).pause();
+            //$('.playback').removeClass('playing');
+            clearInterval(updateProgress);
+            isPlaying = false;
+            $('.play-btn').css("background-position", "0px 0px");
+        }
+
+        var setProgress = function (value) {
+            
+            var currentSec = parseInt(value % 60) < 10 ? '0' + parseInt(value % 60) : parseInt(value % 60),
+                ratio = value / $player.get(0).duration * 100,
+                duration = $player.get(0).duration;
+            var sec = parseInt(duration % 60) < 10 ? '0' + parseInt(duration % 60) : parseInt(duration % 60);
+            $('.player-position').html(parseInt(value / 60) + ':' + currentSec);
+            $('.progress .playing').css('width', ratio + '%');
+            $('.player-dot').css('left', ratio + '%');
+            $('.player-duration').html(parseInt(duration / 60) + ':' + sec);
+        }
+
+        var updateProgress = function () {
+            setProgress($player.get(0).currentTime);
+        }
+
+        // Progress slider
+        $('.progress .slider').slider({
+            step: 0.1, slide: function (event, ui) {
+                //$(this).addClass('enable');
+                clearInterval(timeout);
+                setProgress($player.get(0).duration * ui.value / 100);
+
+            }, stop: function (event, ui) {
+                $player.get(0).currentTime = $player.get(0).duration * ui.value / 100;
+                //$(this).removeClass('enable');
+                timeout = setInterval(updateProgress, 500);
+            }
+        });
+
+        $('.prev-btn').click(function () {
+            var c = getrow() - 1;
+            if (curindex - 1 >= 0 ) {
+                c = curindex - 1;
+            }
+            play1(c);
+        });
+
+        $(".next-btn").click(function () {
+            var c = 0;
+            if(curindex+1<getrow()){
+                c = curindex + 1;
+            }
+            play1(c);
+        });
+        
+        $('.play-btn').click(function () {
+            if (isPlaying) {
+                pause();
+            }
+            else {
+                play();
+            }
+
+        });
+
+        $('audio').on('ended', function () {
+            $(".next-btn").click();
+
+        });
+
+        $('#myfavbtn').click(function () {
+            $.post('/ajax/song/myfav', {}, function (data) {
+                switch (data.code) {
+                    case 0:
+                        $(".playlist-body .row-item").remove();
+                        var r = getrow() > 0 ? getrow() : 0;
+                        $(".playlist-body").appendRowItem(data.playlist);
+                        $('.song_num').html(getrow());
+                        if (data.isloadandplay) {
+                            if (getrow() > 0) {
+                                play1(r);
+                                //playmusic({ 'songid': data.playlist[0].song_id });
+                            }
+                        }
+                        alert('加载成功');
+                        break;
+                    case 1: alert('请先登录'); break;
+                }
+
+            }, 'json');
+        });
+    });
+        </script>
+
+   </head>
+<body style="width:100%;height:100%">
+    <div class="top">
+        <div class="logo"><h3><a href="#"></a></h3></div>
+        <div class="search_box fl" style="margin-top:12px;margin-left:25px;">
+            <a href="#" class="search_status"></a>
+            <div class="search_input_wraper"><input class="search_input" type="text"></div>
+        </div>
+        <div class="login_box fr">
+            马上
+            <a href="#">登录</a>
+        </div>
+    </div>
+    <div class="middle">
+        <div class="slide_210 fl">
+            <div class="menu_wrap pt10 pb10">
+                <ul>
+                    <li><a href="#"><i class="fl icon_play"></i>正在播放</a></li>
+                    <li><a href="#"><i class="fl icon_history"></i>播放历史</a></li>
+                    <li><a href="javascript:;" id="myfavbtn" ><i class="fl icon_myfav"></i>我收藏的单曲</a></li>
+                </ul>
+            </div>
+            <div class="collect_wrap pt10">
+                <h3>我创建的精选集<span><a href="#"></a></span></h3>
+            </div>
+            <div class="collect_list">
+                <div class="collect_none"></div>
+            </div>
+        </div>
+        <div class="slide_main">
+            <div class="playlist-header row-item">
+                <div class="row-item-body">
+                    <ul class="clearfix" style="width:100%;height:100%;">
+                        <li class="c1" >歌曲(<i style="font-style:normal" class="song_num">0</i>)</li>
+                        <li class="c2" >演唱者</li>
+                        <li class="c3">专辑</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="playlist-body">
+            </div>
+            <div class="playlist-footer">
+                <div class="track-all"> 
+                    <div class="all-checkbox">
+                        <input id="J_checkAll_track" type="checkbox">
+                    </div>
+                    <div class="all-item">
+                        <a class="icon-tracks-delete" id="J_trackListDelete">删除</a>
+                    </div>
+                    <div class="all-item">
+                        <a class="icon-tracks-fav" id="J_trackListFav">收藏</a>
+                    </div>
+                    <div class="all-item">
+                        <a class="icon-tracks-add" >添加到精选集</a>
+                    </div>
+                    <div class="all-item">
+                        <a class="icon-tracks-more" data-type="track" data-event="more" id="J_trackListMore">更多</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function () {
+                $playlist_scroll = $(".playlist-body").niceScroll({ touchbehavior: false, cursorcolor: "#CCC", cursoropacitymax: 0.7, cursorwidth: 6, background: "transparent", autohidemode: false });
+
+            });
+        </script>
+        <div class="slide_270 fr">
+            <div class="song_cover"> 
+                <div class="song_img">
+                    <a href="#"><img src="" /></a>
+                </div>
+
+            </div>
+            <div class="song_sale"><a href="#">去音乐馆淘一下</a></div>
+            <div class="song_lrc" style="padding:50px 0px">歌词未实现</div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="J_playerWrap">
+            <div class="player-info">
+                <div class="track-info">
+                    <div class="player-track-info">
+                        <a class="clear_margin">暂无歌曲</a><a>-</a><a>歌手</a>
+                    </div>
+                    <div class="track-controls">
+                        <a title="收藏" class="icon-fav"></a>
+                        <a title="分享" class="icon-share"></a>
+                        <a title="更多" class="icon-more"></a>
+                    </div>
+                </div>
+                <div class="player-length">
+                    <audio id="playerer" class="meJsAPlayer" src="qwe.mp3" style="display: none"></audio>
+                    <div class="player-position">00:00</div>
+                    <div class="player-progresss" style='position: absolute; top: 0px;'>
+                        <div class="progress">
+                            <div class="clearfix slider" style="width:683px;height:18px; z-index:999">
+                                <div class="loading"></div>
+                                <div class="playing"></div>
+                            </div>
+                        </div>
+                        <div class="player-dot" style='position: absolute; margin-left: -4px; cursor: pointer; top: 0px; left: 0%; width: 18px; height: 18px; background: url("/content/css/play/ico.png") no-repeat -32px -338px'></div>
+                    </div>
+                    <div class="player-duration">00:00</div>
+                </div>
+            </div>
+            <div class="player-controls">
+                <a class="prev-btn"></a>
+                <a class="play-btn"></a>
+                <a class="next-btn"></a>
+            </div>
+
+            <div class="player-volume">
+                <a class="mode-hq-on1"></a>
+                <div class="volume">
+                    <div class="volume-on"></div>
+                    <div class="volume-wrap">
+                        <div class="volume-panel">
+                            <div class="volume-cur"></div>
+                        </div>
+                        <div class="volume-control" >
+                            <a class="volume-dot"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

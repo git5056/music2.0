@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/css/global.css" rel="stylesheet" />
+    <link href="~/Content/css/layout1.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery-2.1.4.js"></script>
+    <script src="~/Content/js/submenu.js"></script>
+    <script src="~/Content/js/fav_collect.js"></script>
+    @RenderSection("css", false)
+    
+</head>
+<body>
+    <div class="head">
+        <div class="head_swap">
+            <div class="head_top">
+                <span class="left">
+                    <a id="set_home" href="javascript:;">设为首页</a>&nbsp;|
+                    <a id="fav" href="javascript:;">加入收藏</a>
+                </span>
+                <section id="login">
+                   <!-- Html.Partial("_LoginPartial",null* IMusic.BLL.UserFactory.CurrentUser())*-->
+                </section>
+            </div>
+            <div class="head_mid">
+                <a class="head_mid_logo mt10" href="#"></a>
+                <div class="fl" style="margin-left:123px;margin-top:20px;">
+                    @Html.Partial("_SearchbarPartial")
+                </div>
+            </div>
+
+            <div class="nav">
+                <ul>
+                    <li>
+                        <!--use absolute url to index page-->
+                        <a href='@("http://" + HttpContext.Current.Request.Url.Host + (Request.Url.Port == 80 ? "" :":"+ Request.Url.Port.ToString()))'>首页</a></li>
+                    <li>
+                        @Html.ActionLink("乐库","Index","Singer")
+                        <dl class="submenu">
+                            <dd>@Html.ActionLink("分类", "Index","Tag")</dd>
+                            <dd>@Html.ActionLink("专辑", "Index", "Album1")</dd>
+                            <dd>@Html.ActionLink("歌手", "/1", "Singer")</dd>
+                            <dd>@Html.ActionLink("精选集", "music_pool", "Rank")</dd>
+                        </dl>
+
+                    </li>
+                    <li>@Html.ActionLink("排行榜", "Index", "Rank")</li>
+                    <li>@Html.ActionLink("电台", "music_pool", "Rank")</li>
+                    <li>
+                        @Html.ActionLink("视频", "music_pool", "Rank")
+                        <dl class="submenu">
+                            <dd>@Html.ActionLink("MV", "music_pool", "Rank")</dd>
+                            <dd>@Html.ActionLink("PV", "music_pool", "Rank")</dd>
+                            <dd>@Html.ActionLink("NEWS", "music_pool", "Rank")</dd>
+                        </dl>
+                    </li>
+                    <li>@Html.ActionLink("专题", "music_pool", "Rank")</li>
+                    <li>@Html.ActionLink("原创", "music_pool", "Rank")</li>
+                    <li>@Html.ActionLink("客户端", "music_pool", "Rank")</li>
+                    <li>@Html.ActionLink("关于", "music_pool", "Rank")</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <!--/head-->
+
+    <div class="content">
+        <section>
+            @RenderBody()
+        </section>
+    </div>
+    <!--/content-->
+    <div class="footer">
+        <div class="footer_swap">
+            <div class="footer_top">
+                <div class="search_bar_wrap">
+                        @Html.Partial("_SearchbarPartial")
+                </div>
+            </div>
+            <div class="footer_mid">
+                <div class="footer_mid_wraper">
+                    <ul>
+                        <li>
+                            关于我们<dl>
+                                <dd><a>I音乐介绍</a></dd>
+                                <dd><a>版权声明</a></dd>
+                                <dd><a>新闻动态</a></dd>
+                            </dl>
+                        </li>
+                        <li>
+                            开放合作
+                            <dl>
+                                <dd><a>友情链接</a></dd>
+                                <dd><a>开放平台</a></dd>
+                                <dd><a>业务合作</a></dd>
+                            </dl>
+                        </li>
+                        <li>
+                            网站帮助
+                            <dl>
+                                <dd><a>常见问题</a></dd>
+                                <dd><a>网站地图</a></dd>
+                                <dd><a>网站公告</a></dd>
+                            </dl>
+                        </li>
+                        <li>
+                            系列产品
+                            <dl>
+                                <dd><a>客户端</a></dd>
+                            </dl>
+                        </li>
+                        <li>
+                            联系我们
+                            <dl>
+                                <dd><a href="#" title="微博" class="connect_me_weixin"></a></dd>
+                                <dd><a href="#" class="more">更多>></a></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                    <div class="QRCode">
+                        <span class="QRCode1"></span>
+                        <span class="QRCode2"></span>
+                        <div class="clearfix"></div>&nbsp;&nbsp;
+                        <strong>IMusic</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <strong>App</strong>
+                    </div>
+                    <div class="copyright">
+                        <p class="copyright_logo_ico"></p>
+                        <p class="clearfix"><a>蜀ICP备15012512号-2</a></p>
+                        <p>川网文[2012]0762-022</p>
+                        <p>网络视听许可证0102622号</p>
+                        <p>增值业务许可证A2.B1.B2-20100002</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="footer_bottom"></div>
+        </div>
+    </div>
+    <!--/footer-->
+    @RenderSection("js", false)
+    <script>
+    $(function () {
+        //set current nav
+        $(".nav li").each(function () {
+            if ($(this).children("a").html() === '@ViewBag.CurrentNav') {
+                $(this).addClass("current");
+            }
+        });
+    });
+        $('#searchbtn').each(function (idx) {
+            $(this).click(function () {
+                
+                if (jQuery.trim($('#searchtext').val()) == '') {
+                }
+                else {
+                    window.open('/tag/search?part=' + jQuery.trim($('#searchtext').val()));
+                }
+                return false;
+            });
+        });
+    </script>
+    </script>
+    <!--/script-->
+</body>
+</html>
+

@@ -1,0 +1,83 @@
+﻿body { text-align: center; font-family:"宋体", arial;margin:0; padding:0; background: #FFF; font-size:12px; color:#000;}
+span,div,form,img,ul,ol,li,dl,dt,dd {margin: 0; padding: 0; border: 0; }
+li{list-style-type:none;}
+img{vertical-align:top;}
+a,h1,h2,h3,h4,h5,h6,p { margin:0; padding:0;font-size:12px; font-weight:normal;}
+
+a:link {color: #1f3a87; text-decoration:none;}
+a:visited {color: #83006f;text-decoration:none;}
+a:hover {color: #bc2931; text-decoration:none;}
+a:active {color: #bc2931;}
+
+.clearfix{
+    clear:both;
+}
+
+.clearbackground{
+    background:none !important;
+}
+    
+.clearfix::before, .clearfix::after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+
+.clear_margin{
+    margin-left:0px !important;
+}
+
+.clearfix:after {
+	clear: both
+}
+
+
+.clearfix {
+	zoom: 1
+}
+
+.text_clip {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fl{
+    float:left !important;
+}
+
+.fr{
+    float: right !important;
+}
+.mt10{
+    margin-top:10px;
+}
+
+.mb10{
+    margin-bottom:10px;
+}
+
+.ml10{
+    margin-left:10px;
+}
+
+.mr10{
+    margin-right:10px;
+}
+
+.pt10{
+    padding-top:10px;
+}
+
+.pb10{
+    padding-bottom:10px;
+}
+
+.pl10{
+    padding-left:10px;
+}
+
+.pr10{
+    padding-right:10px;
+}
+

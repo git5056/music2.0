@@ -1,0 +1,109 @@
+﻿@{
+    Layout = null;
+}
+
+<section id="m_tab01">
+    <script>
+        $(function () {
+            var $tab01 = $(".m_tab01");
+            $(".tab_menu li", $tab01).mouseover(function () {
+                if ($(this).index() == 0) {
+                    $(this).parent("ul").css("background-position", "0px -301px");
+                }
+                else {
+                    $(this).parent("ul").css("background-position", "0px -341px");
+                }
+                var idx = $(this).index();
+                $(".tab_con .tab_item").each(function (data) {
+                    if (data == idx) {
+                        $(this).css("display", "block");
+                    }
+                    else {
+                        $(this).css("display", "none");
+                    }
+                });
+            });
+
+        });
+
+        $(function () {
+            $(".login_box #loginbtn").click(function () {
+
+                alert("aaaa")
+            });
+            
+            $(".login_box .cover").click(function () {
+
+                alert("aaaa")
+            });
+        });
+    </script>
+
+    <div class="m_tab01" style="width:250px;margin: 0px;background: #2E3235 none repeat scroll 0% 0%;">
+        <ul class="tab_menu">
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="tab_con">
+            <div class="tab_item" style="display:block;">
+                <ul class="mod_song_list">
+                    @for (int i = 0; i < 5; i++)
+                    {
+                        <li>
+                            <span class="fl"><span class="num fl">@(i < 9 ? "0" + (i + 1) : (i + 1).ToString())</span></span>
+                            <span class="fl song_name text_clip">
+                                <a href="http://music.migu.cn/#/song/1002428725/P1Z1Y1L2N2/1/001002A" title="陪你度过漫长岁月(陪安东尼度过漫长岁月主题曲)">aaaa32tresfsaaaasaaasfsafsfas</a>
+                            </span>
+                            <span class="icon_tools fr">
+                                <a href="javascript:void(0);" class="play" title="播放"></a>
+                                <a href="javascript:void(0);" class="down" title="下载"></a>
+                            </span>
+                            <div class="clearfix"></div>
+                        </li>
+                    }
+                </ul>
+                <div class="news">
+                    <i class="flag_info"></i>
+                    <ul class="news_list">
+                        <li class="post" style="height:60px;width:100%;width:230px;">
+                            <a class="cover" style="float: left; margin-right: 10px;width:60px;height:60px;background-color:gray;"><img width="60" height="60" style="display:block;background-color:gray;" src="~/Content/img/news_cover.jpg" /></a>
+                            <span class="post_info" style="display:block; width: 150px;float: left;">
+                                <a class="name" style="color: #458FCE;">刘雯默认与崔始源恋情</a>
+                                <p class="clearfix" style="color: #808080;width:100%;display:block">态度暧昧地表示：“崔先生会请大家吃饭的！”</p>
+                            </span>
+                        </li>
+                        <li class="text_clip" ><a href="#">[星闻]蔡康永采访梅长苏 胡歌赞小S就是霓凰郡主</a></li>
+                        <li class="text_clip" ><a href="#">[推荐]IU中文献唱《斑马斑马》 听一千多遍原唱</a></li>
+                        <li class="text_clip" ><a href="#">[八卦]李湘瘦了?现场丰满照曝光 官方图疑过度PS</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab_item" style="display:none;">
+                <div class="login_box">
+                    <span>登录之后,i更懂你哟!</span>
+                    <span class="tools fr">
+                        <a id="loginbtn" href="#">登录</a>
+                        <a class="ml10" href="#">注册</a>
+                    </span>
+                </div>
+                <ul class="mod_song_list">
+                    @for (int i = 0; i < 10; i++)
+                    {
+                        <li>
+                            <span class="fl"><span class="num fl">@(i < 9 ? "0" + (i + 1) : (i + 1).ToString())</span></span>
+                            <span class="fl song_name text_clip">
+                                <a href="http://music.migu.cn/#/song/1002428725/P1Z1Y1L2N2/1/001002A" title="陪你度过漫长岁月(陪安东尼度过漫长岁月主题曲)">陪你度过漫长岁月陪你度过漫长岁月陪你度过漫长岁月陪你度过漫长岁月</a>
+                            </span>
+                            <span class="icon_tools fr">
+                                <a href="javascript:void(0);" class="play" title="播放"></a>
+                                <a href="javascript:void(0);" class="down" title="下载"></a>
+                            </span>
+                            <div class="clearfix"></div>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>

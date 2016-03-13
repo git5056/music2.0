@@ -1,0 +1,29 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+assembly="Domain"
+namespace="Domain"
+auto-import="true">
+  <class name="Domain.Song, Domain" table="songs" >
+    <id name="ID" column="_id" type="int" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="Name" column="song_name" type="string"  />
+    <property name="CoverResId" column="cover_id" type="int"  />
+    <property name="UpTime" column="uptime" type="DateTime"  />
+    <property name="PubTime" column="pubtime" type="DateTime"  />
+    <property name="Hot" column="hot" type="int"  />
+    <property name="SongResId" column="res_id" type="int"  />
+    <property name="AlbumId" column="album_id" type="int"  />
+    <property name="Time" column="time" type="decimal"  />
+    <property name="LrcId" column="lrc_id" type="int"  />
+    <property name="Compose" column="compose" type="string"  />
+    <property name="WriteWords" column="writewords" type="string"  />
+    <property name="TypeIds" column="type_ids" type="string"  />
+    <property name="Tags" column="tags" type="string"  />
+    <!--fetch="join"-->
+    <many-to-one name="Singer" class="Domain.Singer" not-null="false"
+                        column="singer_id" >
+    </many-to-one>
+    <!--<one-to-one name="Singer" class="Domain.Singer" ></one-to-one>-->
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+
+}
+
+<section id="music_special_topic">
+    <div class="music_special_topic">
+        <h3 class="title">音乐专题</h3>
+        <div class="pt10">
+            <ul style="width:100%">
+                @for (int i = 0; i < 4; i++)
+            {
+                    <li style="width:250px;" class="mt10">
+                        <a href="#"><img src=@("/content/img/ztimg0"+(i+1)+".jpg") width="65" height="65" /></a>
+                        <div class="info" style="float:right;width:175px;">
+                            <a href="#" class="text_clip" style="color: #458FCE;font-size: 14px;font-weight: 700;line-height: 20px;width:175px;">2015MAMA亚洲音乐颁奖典礼</a>
+                            <p style="margin-top: 5px;width: 165px;padding: 2px 5px;float: left;background-color: #EFF1F3;text-align:left;line-height: 20px;color: #808080;">满屏的偶像...</p>
+                        </div>
+                    </li>
+            }
+            </ul>
+        </div>
+    </div>
+</section>
