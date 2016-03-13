@@ -5,9 +5,9 @@
 *.cs     diff=csharp
 
 # Standard to msysgit
-*.js linguist-language=Scala
-*.css linguist-language=Scala
-*.html linguist-language=Scala
+*.js linguist-language=c#
+*.css linguist-language=c#
+*.html linguist-language=c#
 *.doc	 diff=astextplain
 *.DOC	 diff=astextplain
 *.docx diff=astextplain
