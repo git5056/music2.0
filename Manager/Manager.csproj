@@ -66,10 +66,12 @@
     <Compile Include="impl\ResourceRespository.cs" />
     <Compile Include="impl\SingerRepository.cs" />
     <Compile Include="impl\SongRepository.cs" />
+    <Compile Include="impl\TestImpl.cs" />
     <Compile Include="inte\IResourceRepository.cs" />
     <Compile Include="inte\ISongRepository.cs" />
     <Compile Include="inte\ISingerRepository.cs" />
     <Compile Include="inte\IRepository.cs" />
+    <Compile Include="inte\ITest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
